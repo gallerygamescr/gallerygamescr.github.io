@@ -1,0 +1,59 @@
+{
+  "business": {
+    "name": "Gallery Games",
+    "tagline": "Tu tienda gamer de confianza",
+    "heroTitle": "Tu tienda gamer",
+    "heroSub": "Consolas, accesorios y tecnología de última generación. Reparación especializada en videojuegos y equipos de cómputo.",
+    "heroImg": "",
+    "logoImg": "",
+    "showNavIcon": true,
+    "showProdEmoji": true,
+    "aboutTitle": "Gallery Games CR",
+    "aboutText": "Somos Gallery Games, tu tienda especializada en videojuegos en Costa Rica. Ofrecemos consolas PlayStation, Xbox y Nintendo, accesorios gaming, tecnología y servicio técnico certificado. Nuestro equipo apasionado por los videojuegos está listo para asesorarte y darte la mejor experiencia de compra.",
+    "aboutImg": "",
+    "statsAuto": true,
+    "stats": [],
+    "values": [
+      {"ico":"🎮","title":"Amplio Catálogo","desc":"PlayStation, Xbox, Nintendo y más. Consolas nuevas, usadas, accesorios y juegos para todos los gustos y presupuestos."},
+      {"ico":"🔧","title":"Servicio Técnico","desc":"Reparación profesional de consolas y equipos de cómputo. Diagnóstico gratuito y garantía en todos los trabajos."},
+      {"ico":"⚡","title":"Atención Rápida","desc":"Respondemos tu consulta al instante por WhatsApp. Reserva tu producto o lleva tu equipo a reparar hoy mismo."}
+    ]
+  },
+  "contact": {
+    "whatsapp": "50600000000",
+    "waDisplay": "0000-0000",
+    "email": "gallerygames@gmail.com",
+    "location": "San José, Costa Rica",
+    "locationUrl": "",
+    "schedule": {
+      "mon": {"open":true,"from":"09:00","to":"18:00"},
+      "tue": {"open":true,"from":"09:00","to":"18:00"},
+      "wed": {"open":true,"from":"09:00","to":"18:00"},
+      "thu": {"open":true,"from":"09:00","to":"18:00"},
+      "fri": {"open":true,"from":"09:00","to":"18:00"},
+      "sat": {"open":true,"from":"09:00","to":"17:00"},
+      "sun": {"open":false,"from":"10:00","to":"14:00"}
+    }
+  },
+  "products": [
+    {"id":1,"name":"PlayStation 5 Slim","cat":"Consolas","desc":"La nueva PS5 Slim con lector de disco. Potencia next-gen, tiempos de carga increíbles y gráficos 4K. Incluye control DualSense y cable HDMI.","price":"₡450,000","status":"available","emoji":"🎮","img":""},
+    {"id":2,"name":"Xbox Series X","cat":"Consolas","desc":"La consola Xbox más potente. 12 teraflops, SSD de alta velocidad, retrocompatibilidad con miles de juegos y Xbox Game Pass.","price":"₡420,000","status":"available","emoji":"🕹️","img":""},
+    {"id":3,"name":"Nintendo Switch OLED","cat":"Consolas","desc":"Pantalla OLED de 7 pulgadas, base con puerto LAN, 64 GB de almacenamiento y Joy-Con en blanco. Juega en TV o modo portátil.","price":"₡280,000","status":"available","emoji":"🔵","img":""},
+    {"id":4,"name":"Control DualSense PS5","cat":"Accesorios","desc":"Control inalámbrico con gatillos adaptativos, retroalimentación háptica y micrófono integrado. Compatible con PS5 y PC.","price":"₡55,000","status":"available","emoji":"🎯","img":""},
+    {"id":5,"name":"Headset Gaming HyperX","cat":"Accesorios","desc":"Auriculares gaming con sonido surround 7.1, micrófono con cancelación de ruido y diadema de aluminio ultraligera. Compatible multi-plataforma.","price":"₡38,000","status":"available","emoji":"🎧","img":""},
+    {"id":6,"name":"Teclado Mecánico Gamer","cat":"Periféricos","desc":"Teclado mecánico RGB con switches Cherry MX Red, teclas PBT doble inyección y cable USB-C desmontable.","price":"₡45,000","status":"available","emoji":"⌨️","img":""},
+    {"id":7,"name":"Nintendo Switch Games Bundle","cat":"Juegos","desc":"Pack de 3 juegos físicos para Nintendo Switch. Títulos varían según disponibilidad. Consultar stock actual por WhatsApp.","price":"Consultar","status":"limited","emoji":"🃏","img":""},
+    {"id":8,"name":"SSD NVMe 1TB Samsung","cat":"Tecnología","desc":"Unidad de estado sólido NVMe M.2 para expansión de PS5 o PC. Velocidades de lectura hasta 7,000 MB/s. Incluye disipador.","price":"₡52,000","status":"available","emoji":"💾","img":""}
+  ],
+  "packages": [
+    {"id":1,"name":"Diagnóstico y Limpieza","ico":"🔍","desc":"Diagnóstico completo de tu consola o computadora. Limpieza interna, cambio de pasta térmica y verificación de componentes. Aplica para PS4, PS5, Xbox y PC.","price":"Desde ₡8,000","detail":"Entrega en 24h · Garantía incluida"},
+    {"id":2,"name":"Reparación de Consola","ico":"🔧","desc":"Reparación de fallas comunes: HDMI, lectores de disco, botones, puertos USB, overheating. Diagnóstico gratuito y presupuesto sin compromiso.","price":"Desde ₡15,000","detail":"PS4 · PS5 · Xbox · Nintendo"},
+    {"id":3,"name":"Mantenimiento de PC","ico":"💻","desc":"Mantenimiento preventivo y correctivo para laptops y computadoras de escritorio. Limpieza, actualización de drivers, eliminación de virus y optimización.","price":"Desde ₡12,000","detail":"Laptops y Desktop · Todos los modelos"},
+    {"id":4,"name":"Instalación de SSD/RAM","ico":"⚡","desc":"Instalación y configuración de SSD NVMe, SATA o RAM en tu laptop o PC. Clonado de disco incluido si necesitás migrar tu sistema operativo.","price":"Desde ₡10,000","detail":"Instalación + configuración · Sin pérdida de datos"}
+  ],
+  "gallery": [],
+  "videos": [
+    {"id":1,"url":"https://www.youtube.com/watch?v=4l9M0RaJeQU","title":"PS5 Slim — Unboxing y Review","desc":"Todo lo que necesitás saber sobre la nueva PlayStation 5 Slim."},
+    {"id":2,"url":"https://www.youtube.com/watch?v=pFr6pMV7SNI","title":"Xbox Series X — ¿Vale la pena en 2024?","desc":"Análisis completo de la consola Xbox más potente."}
+  ]
+}
