@@ -3,10 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Prevent browsers from caching index.html — always load fresh from GitHub -->
+
+<!-- ============================================================
+  CACHE BUSTING — ESTRATEGIA COMPLETA PARA GITHUB PAGES
+  Capa 1: Meta HTTP headers — le dicen al navegador que nunca cachee
+  Capa 2: Service Worker desregistro (ver script al final del <head>)
+  Capa 3: fetch() de data.json siempre con ?nocache=timestamp
+  ============================================================ -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
+<!-- Fuerza revalidación en CDNs como Cloudflare/Fastly que usa GitHub -->
+<meta http-equiv="Surrogate-Control" content="no-store">
+
 <title>Gallery Games – Consolas, Accesorios & Reparación</title>
 <meta name="description" content="Gallery Games Costa Rica. Venta de consolas PlayStation, Xbox, Nintendo, accesorios y tecnología. Servicio técnico especializado en videojuegos y equipos de cómputo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -484,6 +493,33 @@ code{background:rgba(124,58,237,.12);padding:2px 6px;border-radius:4px;font-size
 @media(max-width:560px){.vid-grid{grid-template-columns:1fr}}
 
 </style>
+
+<!-- ============================================================
+  CAPA 2: Desregistrar Service Workers y limpiar Cache API
+  Esto destruye cualquier SW que haya quedado de versiones anteriores
+  y borra todas las entradas del Cache Storage del navegador.
+  Se ejecuta de forma síncrona antes de que cargue el body.
+  ============================================================ -->
+<script>
+(function(){
+  // 1. Desregistrar todos los Service Workers
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.getRegistrations().then(function(regs){
+      regs.forEach(function(reg){ reg.unregister(); });
+    });
+  }
+  // 2. Limpiar Cache API (caches.open, workbox, etc.)
+  if('caches' in window){
+    caches.keys().then(function(names){
+      names.forEach(function(name){ caches.delete(name); });
+    });
+  }
+  // 3. Si venimos de bfcache (botón Atrás), forzar reload completo
+  window.addEventListener('pageshow', function(e){
+    if(e.persisted){ window.location.reload(true); }
+  });
+})();
+</script>
 </head>
 <body>
 
@@ -1104,7 +1140,7 @@ const DEFAULT={
     {id:1,url:"https://www.youtube.com/watch?v=4l9M0RaJeQU",title:"PS5 Slim — Unboxing y Review",desc:"Todo lo que necesitás saber sobre la nueva PlayStation 5 Slim."},
     {id:2,url:"https://www.youtube.com/watch?v=pFr6pMV7SNI",title:"Xbox Series X — Vale la pena en 2024?",desc:"Análisis completo de la consola Xbox más potente."}
   ],
-  adminPw:"88b93a136c5aef18675192431c4805ebc2174ee1d9fb8fcacfff98a91a129b00"
+  adminPw:"77736614e19295877cd1b3f7c76bdeab7514d28457eac6df9a48d4da6ab7c6ea"
 };
 
 // Image storage: separate from main data to avoid 5MB limit
