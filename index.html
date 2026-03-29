@@ -803,7 +803,7 @@ code{background:rgba(124,58,237,.12);padding:2px 6px;border-radius:4px;font-size
                 <div class="aief-title">🏪 Negocio</div>
                 <div class="aief-row"><label>Nombre</label><input id="aie-nombre" type="text" placeholder="Gallery Games"></div>
                 <div class="aief-row"><label>Eslogan</label><input id="aie-tagline" type="text" placeholder="Tu tienda gamer de confianza"></div>
-                <div class="aief-row"><label>Descripción</label><textarea id="aie-desc" rows="2" placeholder="Postres caseros hechos con amor..."></textarea></div>
+                <div class="aief-row"><label>Descripción</label><textarea id="aie-desc" rows="2" placeholder="Consolas, accesorios y tecnología gaming..."></textarea></div>
                 <div class="aief-row"><label>Imagen principal (Hero)</label>
                   <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
                     <button class="aie-use-img-btn" id="heroImgBtn" onclick="useImageForHero()" style="flex-shrink:0">📷 Usar imagen cargada</button>
@@ -1346,8 +1346,8 @@ function renderBusiness(){
 
   // Stats
   const stats=b.statsAuto!==false?[
-    {num:D.products.filter(p=>p.status==="available").length+"+",lbl:"Tours"},
-    {num:[...new Set(D.products.map(p=>p.cat))].length+"",lbl:"Destinos"},
+    {num:D.products.filter(p=>p.status==="available").length+"+",lbl:"Productos"},
+    {num:[...new Set(D.products.map(p=>p.cat))].length+"",lbl:"Categorías"},
     {num:"⭐",lbl:"Calificación"}
   ]:(b.stats||[]);
   document.getElementById("heroStats").innerHTML=stats.map(s=>`<div class="stat"><div class="stat-n">${s.num}</div><div class="stat-l">${s.lbl}</div></div>`).join("");
@@ -1429,7 +1429,7 @@ function renderProducts(){
   } // close if(picker)
 }
 
-function catEmoji(cat){const map={"Aventura":"🏔️","Naturaleza":"🌿","Cultural":"🤠","Playa":"🏄","Senderismo":"🥾","Fotografía":"📸","Familiar":"👨‍👩‍👧","Nocturno":"🌙"};return map[cat]||"🗺️";}
+function catEmoji(cat){const map={"Consolas":"🎮","Accesorios":"🕹️","Juegos":"🃏","Tecnología":"💻","Periféricos":"⌨️","Coleccionables":"🏆","Reparación":"🔧"};return map[cat]||"🎮";}
 
 function productCard(p,showEmoji){
   const bCls=p.status==="available"?"b-on":p.status==="limited"?"b-lim":"b-off";
@@ -1569,7 +1569,7 @@ function openProductModal(id){
   const unavailMsg=p.status==="limited"
     ?`<div class="prod-modal-unavail">⚠️ <span>Este producto tiene <strong>stock limitado</strong>. Te recomendamos consultar antes de reservar.</span></div>`
     :p.status==="unavailable"
-    ?`<div class="prod-modal-unavail" style="background:#F8D7DA;color:#721C24">❌ <span>Este tour está <strong>sin cupo</strong> actualmente. Podés pedirnos que te avisemos cuando haya disponibilidad.</span></div>`:"";
+    ?`<div class="prod-modal-unavail" style="background:rgba(248,113,113,.1);color:#f87171;border:1px solid rgba(248,113,113,.3)">❌ <span>Este producto está <strong>sin stock</strong> actualmente. Podés pedirnos que te avisemos cuando haya disponibilidad.</span></div>`:"";
   let btnHtml;
   if(p.status==="available"){
     btnHtml=`<button class="btn-pr" onclick="orderProduct('${encodeURIComponent(p.name)}');closeProdModal()">📱 Pedir por WhatsApp</button>`;
@@ -1710,7 +1710,7 @@ async function sendFormMessage(){
     const text=[
       `¡Hola ${_bizName()}! 🌿`,
       `*Nombre:* ${name}`,
-      prodLines?`*Tours de interés:*\n${prodLines}`:"",
+      prodLines?`*Productos de interés:*\n${prodLines}`:"",
       msg?`*Consulta:* ${msg}`:""
     ].filter(Boolean).join("\n");
     window.open(`https://wa.me/${D.contact.whatsapp}?text=${encodeURIComponent(text)}`,"_blank");
@@ -1951,11 +1951,11 @@ function toggleSchedDay(k){
   document.getElementById(`sched-times-${k}`).style.cssText=open?"":"opacity:.4;pointer-events:none";
 }
 
-const CATS_STD2=["Aventura","Naturaleza","Cultural","Playa","Senderismo","Fotografía","Familiar","Nocturno"];
+const CATS_STD2=["Consolas","Accesorios","Juegos","Tecnología","Periféricos","Coleccionables"];
 function renderAdminProducts(){
   document.getElementById("a-prod-list").innerHTML=D.products.map((p,i)=>{
     const isOtra=!CATS_STD2.includes(p.cat);
-    const selVal=isOtra?"Otra":(p.cat||"Postres");
+    const selVal=isOtra?"Otra":(p.cat||"Consolas");
     const showPrice=!!(p.price&&p.price.trim());
     return `<div class="adm-pi" id="api-${i}">
       <div class="adm-pi-hd" onclick="togglePI('api-${i}')">
@@ -1979,9 +1979,9 @@ function renderAdminProducts(){
           </div>
           <div class="adm-fld"><label>Disponibilidad</label>
             <select id="ap-status-${i}">
-              <option value="available" ${p.status==="available"?"selected":""}>✅ Con cupo</option>
+              <option value="available" ${p.status==="available"?"selected":""}>✅ En stock</option>
               <option value="limited" ${p.status==="limited"?"selected":""}>⚠️ Cupo limitado</option>
-              <option value="unavailable" ${p.status==="unavailable"?"selected":""}>❌ Sin cupo</option>
+              <option value="unavailable" ${p.status==="unavailable"?"selected":""}>❌ Sin stock</option>
             </select>
           </div>
         </div>
@@ -2149,7 +2149,7 @@ function saveAdmin(){
   });
   // Products
   D.products=D.products.map((_,i)=>{
-    const catSel=document.getElementById(`ap-cat-${i}`)?.value||"Postres";
+    const catSel=document.getElementById(`ap-cat-${i}`)?.value||"Consolas";
     const catOther=document.getElementById(`ap-cat-other-${i}`)?.value.trim()||"";
     const cat=catSel==="Otra"?(catOther||"Otra"):catSel;
     const showPrice=document.getElementById(`ap-showprice-${i}`)?.checked;
@@ -2635,7 +2635,7 @@ function applyAiData(){
       D.products[ex].price=pr;
       if(img)D.products[ex].img=img;
     }else{
-      D.products.push({id:Date.now()+Math.random(),name:n,cat:"Aventura",desc:"",price:pr,status:"available",emoji:"🗺️",img});
+      D.products.push({id:Date.now()+Math.random(),name:n,cat:"Consolas",desc:"",price:pr,status:"available",emoji:"🎮",img});
       newProds++;
     }
   });
