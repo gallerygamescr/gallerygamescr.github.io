@@ -994,7 +994,7 @@ code{background:rgba(124,58,237,.12);padding:2px 6px;border-radius:4px;font-size
         <div class="adm-section-title">🔑 Configuración GitHub</div>
         <div id="ghFileProtocolWarn" style="display:none;background:#F8D7DA;border:1px solid #f5c6cb;color:#721c24;border-radius:var(--r-sm);padding:10px 14px;font-size:.8rem;margin-bottom:16px;line-height:1.5">
           ⚠️ <strong>Estás en modo local (file://)</strong> — los botones de publicar no funcionarán desde aquí.<br>
-          Primero subí <code>index.html</code> y <code>data.json</code> manualmente a GitHub, luego abrí <strong>gallerygames.github.io</strong> y usá el panel desde ahí.
+          Primero subí <code>index.html</code> y <code>data.json</code> manualmente a GitHub, luego abrí <strong>gallerygamescr.github.io</strong> y usá el panel desde ahí.
         </div>
         <div class="adm-note blue">
           💡 <strong>Primera vez:</strong> creá un token con permiso <code>repo</code> en GitHub.
@@ -1002,9 +1002,9 @@ code{background:rgba(124,58,237,.12);padding:2px 6px;border-radius:4px;font-size
         </div>
         <div class="adm-row">
           <div class="adm-fld"><label>Usuario de GitHub</label>
-            <input id="gh-user" type="text" placeholder="gallerygames" value="gallerygames" autocomplete="off"></div>
+            <input id="gh-user" type="text" placeholder="gallerygamescr" value="gallerygamescr" autocomplete="off"></div>
           <div class="adm-fld"><label>Repositorio</label>
-            <input id="gh-repo" type="text" placeholder="gallerygames.github.io" value="gallerygames.github.io" autocomplete="off"></div>
+            <input id="gh-repo" type="text" placeholder="gallerygamescr.github.io" value="gallerygamescr.github.io" autocomplete="off"></div>
         </div>
         <div class="adm-row">
           <div class="adm-fld"><label>Rama (branch)</label>
@@ -1053,7 +1053,7 @@ code{background:rgba(124,58,237,.12);padding:2px 6px;border-radius:4px;font-size
           <div id="ghLastPublish" style="font-size:.78rem;color:var(--text-l);margin-top:12px"></div>
           <div class="adm-note blue" style="margin-top:12px">
             ⏱ Los cambios aparecen en
-            <a id="ghSiteLink" href="https://gallerygames.github.io" target="_blank" rel="noopener" style="color:var(--caramel-l);font-weight:700">gallerygames.github.io ↗</a>
+            <a id="ghSiteLink" href="https://gallerygamescr.github.io" target="_blank" rel="noopener" style="color:var(--caramel-l);font-weight:700">gallerygamescr.github.io ↗</a>
             en <strong>~1 minuto</strong>.
           </div>
         </div>
@@ -2811,7 +2811,7 @@ function updateSiteLink(cfg){
 }
 function populateGhConfig(){
   const cfg=loadGhConfig();
-  // Always restore saved values; if none saved, HTML default values remain (coraluna, gallerygames.github.io, main)
+  // Always restore saved values; if none saved, HTML default values remain (coraluna, gallerygamescr.github.io, main)
   if(cfg.user)document.getElementById("gh-user").value=cfg.user;
   if(cfg.repo)document.getElementById("gh-repo").value=cfg.repo;
   if(cfg.branch)document.getElementById("gh-branch").value=cfg.branch;
@@ -2917,7 +2917,7 @@ async function verifyGhConnection(){
   }
 
   if(location.protocol==="file:"){
-    setGhStatus("err","⚠️ No podés verificar desde archivo local (file://). Subí el archivo a GitHub Pages y abrí gallerygames.github.io.");
+    setGhStatus("err","⚠️ No podés verificar desde archivo local (file://). Subí el archivo a GitHub Pages y abrí gallerygamescr.github.io.");
     return;
   }
 
@@ -2964,7 +2964,7 @@ async function publishDataJson(){
   if(!cfg.token||!cfg.user||!cfg.repo){showNotif("⚠️ Configurá GitHub primero");switchToPublishTab();return;}
   if(!cfg.branch)cfg.branch="main";
   if(location.protocol==="file:"){
-    setGhStatus("err","⚠️ No podés publicar desde archivo local. Subí primero a GitHub y abrí gallerygames.github.io.");
+    setGhStatus("err","⚠️ No podés publicar desde archivo local. Subí primero a GitHub y abrí gallerygamescr.github.io.");
     return;
   }
   const btn=document.getElementById("ghPublishDataBtn");
@@ -3002,7 +3002,7 @@ async function publishIndexHtml(){
   if(!cfg.token||!cfg.user||!cfg.repo){showNotif("⚠️ Configurá GitHub primero");switchToPublishTab();return;}
   if(!cfg.branch)cfg.branch="main";
   if(location.protocol==="file:"){
-    setGhStatus("err","⚠️ No podés publicar desde archivo local. Subí primero a GitHub y abrí gallerygames.github.io.");
+    setGhStatus("err","⚠️ No podés publicar desde archivo local. Subí primero a GitHub y abrí gallerygamescr.github.io.");
     return;
   }
   if(!confirm("¿Publicar el index.html en GitHub? Esto actualiza el diseño de la página para todos los visitantes.")){return;}
