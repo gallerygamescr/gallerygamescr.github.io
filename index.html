@@ -824,7 +824,7 @@ code{background:rgba(124,58,237,.12);padding:2px 6px;border-radius:4px;font-size
                 </div>
               </div>
               <div class="aief-section">
-                <div class="aief-title">🍽 Productos <span style="font-size:.74rem;font-weight:400;color:var(--text-l)">— escribí lo que ves</span></div>
+                <div class="aief-title">🎮 Productos <span style="font-size:.74rem;font-weight:400;color:var(--text-l)">— escribí lo que ves</span></div>
                 <div id="aieProductList"></div>
                 <button class="aie-add-btn" onclick="aieAddProduct()">+ Agregar producto</button>
               </div>
@@ -1446,7 +1446,7 @@ function productCard(p,showEmoji){
   return `<div class="p-card" onclick="openProductModal(${p.id})">
     <div class="p-img">
       ${p.img?`<img src="${p.img}" alt="${p.name}" loading="lazy">`:""}
-      ${showEmoji&&!p.img?`<span class="p-ico">${p.emoji||"🍽"}</span>`:""}
+      ${showEmoji&&!p.img?`<span class="p-ico">${p.emoji||"🎮"}</span>`:""}
       <span class="p-badge ${bCls}">${bTxt}</span>
     </div>
     <div class="p-body">
@@ -1579,7 +1579,7 @@ function openProductModal(id){
     btnHtml=`<button class="btn-pr" style="background:#6c757d" onclick="orderProductUnavail('${encodeURIComponent(p.name)}');closeProdModal()">🔔 Avisar cuando haya</button>`;
   }
   document.getElementById("prodModalContent").innerHTML=`
-    ${p.img?`<img class="prod-modal-img" src="${p.img}" alt="${p.name}">`:`<div class="prod-modal-img-ph">${showEmoji?(p.emoji||"🍽"):"🍽"}</div>`}
+    ${p.img?`<img class="prod-modal-img" src="${p.img}" alt="${p.name}">`:`<div class="prod-modal-img-ph">${showEmoji?(p.emoji||"🎮"):"🎮"}</div>`}
     <div class="prod-modal-body">
       <div class="prod-modal-cat">${p.cat||""}</div>
       <div class="prod-modal-name">${p.name}</div>
@@ -1960,14 +1960,14 @@ function renderAdminProducts(){
     return `<div class="adm-pi" id="api-${i}">
       <div class="adm-pi-hd" onclick="togglePI('api-${i}')">
         <span class="pi-status-dot dot-${p.status==='available'?'on':p.status==='limited'?'lim':'off'}"></span>
-        <span style="flex:1;font-size:.88rem">${p.emoji||"🍽"} ${p.name}</span>
+        <span style="flex:1;font-size:.88rem">${p.emoji||"🎮"} ${p.name}</span>
         <button class="btn-del" onclick="event.stopPropagation();deleteProduct(${i})">Eliminar</button>
         <span class="pi-arrow">▼</span>
       </div>
       <div class="adm-pi-bd" id="apib-${i}">
         <div class="adm-row">
           <div class="adm-fld"><label>Nombre</label><input type="text" id="ap-name-${i}" value="${esc(p.name)}"></div>
-          <div class="adm-fld"><label>Emoji</label><input type="text" id="ap-ico-${i}" value="${esc(p.emoji||'🍽')}"></div>
+          <div class="adm-fld"><label>Emoji</label><input type="text" id="ap-ico-${i}" value="${esc(p.emoji||'🎮')}"></div>
         </div>
         <div class="adm-row">
           <div class="adm-fld"><label>Categoría</label>
@@ -1980,7 +1980,7 @@ function renderAdminProducts(){
           <div class="adm-fld"><label>Disponibilidad</label>
             <select id="ap-status-${i}">
               <option value="available" ${p.status==="available"?"selected":""}>✅ En stock</option>
-              <option value="limited" ${p.status==="limited"?"selected":""}>⚠️ Cupo limitado</option>
+              <option value="limited" ${p.status==="limited"?"selected":""}>⚠️ Stock limitado</option>
               <option value="unavailable" ${p.status==="unavailable"?"selected":""}>❌ Sin stock</option>
             </select>
           </div>
@@ -2164,7 +2164,7 @@ function saveAdmin(){
       name:document.getElementById(`ap-name-${i}`)?.value||"",cat,
       desc:document.getElementById(`ap-desc-${i}`)?.value||"",
       price,status:document.getElementById(`ap-status-${i}`)?.value||"available",
-      emoji:document.getElementById(`ap-ico-${i}`)?.value||"🍽",
+      emoji:document.getElementById(`ap-ico-${i}`)?.value||"🎮",
       img:finalImg
     };
   });
