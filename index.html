@@ -149,7 +149,7 @@ section{padding:80px 28px}
 .prod-modal{display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center;padding:20px}
 .prod-modal.open{display:flex}
 .prod-modal-bg{position:absolute;inset:0;background:rgba(20,40,100,.82);backdrop-filter:blur(8px)}
-.prod-modal-box{position:relative;background:#1E3272;border-radius:22px;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(255,208,0,.2);animation:fadeIn .3s ease;border:1px solid rgba(255,208,0,.3)}
+.prod-modal-box{position:relative;background:#1E3272;border-radius:22px;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;scrollbar-width:none;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(255,208,0,.2);animation:fadeIn .3s ease;border:1px solid rgba(255,208,0,.3)}.prod-modal-box::-webkit-scrollbar{display:none}
 .prod-modal-img{width:100%;height:320px;object-fit:cover;border-radius:22px 22px 0 0}
 .prod-modal-img-ph{width:100%;height:280px;display:flex;align-items:center;justify-content:center;font-size:80px;background:linear-gradient(145deg,#1E3272,#22366A);border-radius:22px 22px 0 0}
 .prod-modal-body{padding:28px 32px 32px}
@@ -1449,7 +1449,7 @@ function catEmoji(cat){const map={"Consolas":"🎮","Accesorios":"🕹️","Jueg
 
 function productCard(p,showEmoji){
   const bCls=p.status==="available"?"b-on":p.status==="limited"?"b-lim":"b-off";
-  const bTxt=p.status==="available"?"Disponible":p.status==="limited"?"Cupo Limitado":"Sin Cupo";
+  const bTxt=p.status==="available"?"Disponible":p.status==="limited"?"Cantidad Limitada":"Sin Cupo";
   const priceHtml=p.price?`<span class="p-price">${p.price}</span>`:`<span style="font-size:.76rem;color:var(--text-l);font-family:'Exo 2',sans-serif">Consultar precio</span>`;
   let btnHtml;
   if(p.status==="available"){
@@ -1583,7 +1583,7 @@ function openProductModal(id){
   if(!p)return;
   const showEmoji=D.business.showProdEmoji!==false;
   const unavailMsg=p.status==="limited"
-    ?`<div class="prod-modal-unavail">⚠️ <span>Este producto tiene <strong>stock limitado</strong>. Te recomendamos consultar antes de reservar.</span></div>`
+    ?`<div class="prod-modal-unavail">⚠️ <span>Este producto tiene <strong>Cantidad Limitada</strong>. Te recomendamos consultar antes de reservar.</span></div>`
     :p.status==="unavailable"
     ?`<div class="prod-modal-unavail" style="background:rgba(248,113,113,.1);color:#f87171;border:1px solid rgba(248,113,113,.3)">❌ <span>Este producto está <strong>sin stock</strong> actualmente. Podés pedirnos que te avisemos cuando haya disponibilidad.</span></div>`:"";
   let btnHtml;
@@ -1851,7 +1851,7 @@ function printProducts(){
   Object.entries(groups).forEach(([cat,prods])=>{
     html+=`<div class="print-cat-hd">${catEmoji(cat)} ${cat}</div>`;
     prods.forEach(p=>{
-      const st=p.status==="available"?"":p.status==="limited"?"(Cupo Limitado)":"(Sin Cupo)";
+      const st=p.status==="available"?"":p.status==="limited"?"(Cantidad Limitada)":"(Sin Cupo)";
       html+=`<div class="print-row"><span class="print-pname">${p.emoji||"·"} ${p.name}${st?` <span class="print-pstatus">${st}</span>`:""}</span><span class="print-pprice">${p.price||"Consultar"}</span></div>`;
     });
   });
@@ -1996,7 +1996,7 @@ function renderAdminProducts(){
           <div class="adm-fld"><label>Disponibilidad</label>
             <select id="ap-status-${i}">
               <option value="available" ${p.status==="available"?"selected":""}>✅ En stock</option>
-              <option value="limited" ${p.status==="limited"?"selected":""}>⚠️ Stock limitado</option>
+              <option value="limited" ${p.status==="limited"?"selected":""}>⚠️ Cantidad Limitada</option>
               <option value="unavailable" ${p.status==="unavailable"?"selected":""}>❌ Sin stock</option>
             </select>
           </div>
