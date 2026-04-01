@@ -158,11 +158,11 @@
     },
     {
       "id": 1774806564901,
-      "name": "Nuevo Producto",
-      "cat": "Consolas",
-      "desc": "Descripción del producto.",
+      "name": "Atari Colección Pac-Man",
+      "cat": "Coleccionables",
+      "desc": "¡Nostalgia pura en edición de colección!  El Atari Colección Pac-Man llegó a Gallery Games para los verdaderos fans del retro. Ideal para colección, regalo o para presumir en tu setup.",
       "price": "",
-      "status": "available",
+      "status": "limited",
       "emoji": "🎮",
       "img": ""
     }
